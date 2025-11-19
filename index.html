@@ -286,7 +286,8 @@
           display: none;
           width: 100%;
           height: auto;
-          min-height: 80vh;
+          min-height: calc(100vh - 120px); /* Account for header and controls */
+          padding-top: 80px; /* Space for header */
           transform: none !important;
           filter: none !important;
         }
