@@ -1,0 +1,2500 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#6366f1" />
+    <meta
+      name="description"
+      content="Presentasi Interaktif BSC Tiket - Platform Ticketing & Event Management"
+    />
+    <meta
+      property="og:title"
+      content="BSC Tiket - Platform Ticketing & Event Management"
+    />
+    <meta
+      property="og:description"
+      content="Deck presentasi interaktif untuk platform ticketing BSC Tiket."
+    />
+    <meta
+      property="og:image"
+      content="https://placehold.co/1200x630/6366f1/ffffff?text=BSC+Tiket"
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎫</text></svg>"
+    />
+    <title>BSC Tiket - Platform Ticketing & Event Management</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --secondary: #ec4899;
+        --accent: #0ea5e9;
+        --surface: #ffffff;
+        --surface-muted: #f8fafc;
+        --border: rgba(15, 23, 42, 0.08);
+        --text: #0f172a;
+        --muted: #64748b;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --header-height: 80px;
+        --controls-height: 80px;
+      }
+
+      html,
+      body {
+        height: 100%;
+        height: 100dvh; /* Modern mobile viewport fix */
+        font-family:
+          "Inter",
+          "Segoe UI",
+          Roboto,
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        overflow: hidden; /* Prevent body scroll */
+      }
+
+      body {
+        background: linear-gradient(135deg, #eaeeff 0%, #fef2ff 60%);
+        color: var(--text);
+        transition:
+          background 0.4s ease,
+          color 0.4s ease;
+      }
+
+      body.dark-mode {
+        background: radial-gradient(circle at top, #1e1b4b, #020617);
+        color: #f8fafc;
+        --surface: #0f172a;
+        --surface-muted: #1e293b;
+        --border: rgba(148, 163, 184, 0.2);
+        --text: #f8fafc;
+        --muted: #94a3b8;
+      }
+
+      .presentation-container {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh;
+        overflow: hidden;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        height: auto;
+        min-height: var(--header-height);
+        z-index: 100;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .logo-mark {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        display: grid;
+        place-items: center;
+        font-size: 1.5rem;
+        color: white;
+        font-weight: 700;
+      }
+
+      .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+      }
+
+      .logo-text small {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+
+      .logo-text strong {
+        font-size: 1.2rem;
+      }
+
+      .topic-pill {
+        padding: 0.35rem 0.85rem;
+        background: rgba(99, 102, 241, 0.12);
+        color: var(--primary);
+        font-size: 0.85rem;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      body.dark-mode .topic-pill {
+        background: rgba(99, 102, 241, 0.25);
+      }
+
+      .header-insights {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .progress-stack {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .progress-ring {
+        position: relative;
+        width: 60px;
+        height: 60px;
+      }
+
+      .progress-ring svg {
+        transform: rotate(-90deg);
+      }
+
+      .progress-ring circle {
+        fill: none;
+        stroke-width: 8;
+        stroke-linecap: round;
+      }
+
+      .ring-bg {
+        stroke: rgba(148, 163, 184, 0.3);
+      }
+
+      .ring-progress {
+        stroke: url(#ringGradient);
+        stroke-dasharray: 339.292;
+        stroke-dashoffset: 339.292;
+        transition: stroke-dashoffset 0.4s ease;
+      }
+
+      .progress-stack span {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .slide-counter {
+        font-weight: 600;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .header-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--surface-muted);
+        color: var(--text);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .header-btn:hover {
+        background: var(--primary);
+        color: white;
+        border-color: transparent;
+        transform: translateY(-1px);
+      }
+
+      .main-content {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+      }
+
+      .slides-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        padding: 1rem;
+      }
+
+      .slide {
+        width: 1200px;
+        height: 675px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 28px;
+        padding: 3rem;
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.05),
+          0 1px 0 rgba(255, 255, 255, 0.5) inset;
+        position: absolute;
+        opacity: 0;
+        transform-origin: center center;
+        transition:
+          opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+          transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 0.6s ease;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        filter: blur(10px);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(99, 102, 241, 0.5) transparent;
+      }
+
+      .slide::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .slide::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .slide::-webkit-scrollbar-thumb {
+        background: rgba(99, 102, 241, 0.5);
+        border-radius: 10px;
+      }
+
+      .slide::-webkit-scrollbar-thumb:hover {
+        background: rgba(99, 102, 241, 0.8);
+      }
+
+      body.dark-mode .slide {
+        background: rgba(30, 41, 59, 0.7);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.3),
+          0 1px 0 rgba(255, 255, 255, 0.05) inset;
+      }
+
+      .slide.active {
+        opacity: 1;
+        transform: scale(var(--slide-scale, 1));
+        position: relative;
+        left: auto;
+        filter: blur(0);
+        z-index: 10;
+        pointer-events: auto;
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 15;
+        background: rgba(99, 102, 241, 0.95);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: none;
+        align-items: center;
+        gap: 0.5rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .scroll-indicator.visible {
+        display: flex;
+        animation: bounceIndicator 2s ease-in-out infinite;
+      }
+
+      .scroll-indicator:hover {
+        background: rgba(79, 70, 229, 1);
+        transform: translateX(-50%) translateY(-3px);
+      }
+
+      @keyframes bounceIndicator {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(-8px); }
+      }
+
+      body.dark-mode .scroll-indicator {
+        background: rgba(99, 102, 241, 0.9);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.6);
+      }
+
+      .slide.active .diagram-svg text {
+        text-rendering: optimizeLegibility;
+      }
+
+      .slide.prev {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-150%) scale(calc(var(--slide-scale, 1) * 0.9))
+          rotate(-5deg);
+        opacity: 0;
+        filter: blur(20px);
+        pointer-events: none;
+      }
+
+      .slide.next {
+        position: absolute;
+        left: 50%;
+        transform: translateX(50%) scale(calc(var(--slide-scale, 1) * 0.96));
+        opacity: 0;
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      /* Staggered Animation for Slide Content */
+      .slide > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+
+      .slide.active > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide.active > *:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      .slide.active > *:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      .slide.active > *:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      .slide.active > *:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+      .slide.active > *:nth-child(5) {
+        transition-delay: 0.5s;
+      }
+      .slide.active > *:nth-child(6) {
+        transition-delay: 0.6s;
+      }
+      .slide.active > *:nth-child(n + 7) {
+        transition-delay: 0.7s;
+      }
+
+      /* Enhanced Visual Blocks */
+      .visual-block {
+        background: linear-gradient(
+          135deg,
+          var(--surface-muted) 0%,
+          rgba(255, 255, 255, 0.5) 100%
+        );
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        overflow: hidden;
+      }
+
+      .visual-block:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px -12px rgba(99, 102, 241, 0.15);
+      }
+
+      body.dark-mode .visual-block {
+        background: linear-gradient(
+          135deg,
+          rgba(30, 41, 59, 0.5) 0%,
+          rgba(15, 23, 42, 0.8) 100%
+        );
+      }
+
+      .slide h1 {
+        font-size: 2.75rem;
+        color: var(--primary);
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+      }
+
+      .slide .subtitle {
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+        font-weight: 300;
+      }
+
+      .slide h2 {
+        font-size: 1.6rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--primary);
+      }
+
+      .slide h3 {
+        font-size: 1.15rem;
+        margin-top: 1.2rem;
+        margin-bottom: 0.6rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .slide p {
+        line-height: 1.7;
+        color: var(--muted);
+        margin-bottom: 1rem;
+        max-width: 75ch; /* Optimal reading width */
+      }
+
+      .slide ul {
+        margin: 0 0 1rem 1.25rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .slide li {
+        margin-bottom: 0.5rem;
+      }
+
+      .info-card,
+      .stat-box {
+        background: var(--surface-muted);
+        padding: 1.25rem 1.5rem;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        margin-bottom: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .info-card:hover,
+      .stat-box:hover {
+        background: rgba(99, 102, 241, 0.05);
+        border-color: rgba(99, 102, 241, 0.2);
+      }
+
+      .stat-box strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--text);
+        font-size: 1.05rem;
+      }
+
+      body.dark-mode .info-card,
+      body.dark-mode .stat-box {
+        background: rgba(15, 23, 42, 0.7);
+      }
+
+      .layout-split,
+      .two-column {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        align-items: start;
+        margin-top: 1rem;
+      }
+
+      /* Specific adjustment for diagrams */
+      .layout-split .visual-block {
+        align-self: center;
+      }
+
+      .visual-block {
+        background: var(--surface-muted);
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        padding: 1.5rem;
+      }
+
+      .diagram-svg {
+        width: 100%;
+        display: block;
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .pill {
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(99, 102, 241, 0.12);
+        color: var(--primary);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      body.dark-mode .pill {
+        background: rgba(99, 102, 241, 0.22);
+      }
+
+      .badge-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .badge-grid .info-card {
+        margin: 0;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem 2rem;
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.06);
+      }
+
+      .nav-buttons {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 12px;
+        padding: 0.65rem 1.4rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        font-size: 0.95rem;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.35);
+      }
+
+      .btn-secondary {
+        background: var(--surface-muted);
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .part-selector {
+        display: flex;
+        gap: 0.4rem;
+      }
+
+      .part-btn {
+        border: 1px solid var(--border);
+        padding: 0.45rem 1.1rem;
+        border-radius: 999px;
+        background: transparent;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--muted);
+        transition: all 0.2s ease;
+      }
+
+      .part-btn.active {
+        background: var(--primary);
+        border-color: transparent;
+        color: white;
+        box-shadow: 0 8px 16px rgba(99, 102, 241, 0.35);
+      }
+
+      .jump-to-slide {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .jump-to-slide input {
+        width: 70px;
+        padding: 0.45rem 0.65rem;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--surface-muted);
+        text-align: center;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: var(--surface);
+        border-radius: 24px;
+        padding: 2rem;
+        max-width: 900px;
+        width: 90%;
+        max-height: 85vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 12px;
+        background: var(--surface-muted);
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+
+      .slide-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .grid-item {
+        background: var(--surface-muted);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1rem;
+        font-weight: 600;
+        color: var(--text);
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          border 0.2s ease;
+      }
+
+      .grid-item.active {
+        border-color: var(--primary);
+        box-shadow: 0 10px 20px rgba(99, 102, 241, 0.25);
+      }
+
+      .grid-item:hover {
+        transform: translateY(-4px);
+      }
+
+      .slide {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 1024px) {
+        .slide {
+          padding: 2rem;
+        }
+
+        /* Improved Tablet/Mobile Header */
+        .header {
+          gap: 0.5rem;
+        }
+
+        .header-insights {
+          width: auto;
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .logo-text {
+          display: flex;
+          transform: scale(0.85);
+          transform-origin: left center;
+        }
+
+        .topic-pill {
+          display: block;
+          font-size: 0.7rem;
+          padding: 0.25rem 0.6rem;
+          max-width: 80px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .header-insights .progress-stack span {
+          display: none;
+        }
+
+        .header {
+          padding: 0.5rem 0.75rem;
+          min-height: 60px;
+          gap: 0.25rem;
+        }
+
+        .slides-container {
+          padding: 0.5rem;
+        }
+
+        /* Let the JS scaling handle the size */
+        .slide {
+          padding: 1.5rem;
+          border-radius: 20px;
+        }
+
+        .visual-block {
+          overflow-x: auto;
+          padding: 1rem;
+        }
+
+        .diagram-svg {
+          min-width: 450px; /* Force scroll for readability */
+        }
+
+        .layout-split,
+        .two-column {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .slide h1 {
+          font-size: 1.75rem;
+        }
+
+        .slide h2 {
+          font-size: 1.35rem;
+        }
+
+        .controls {
+          padding: 0.75rem 1rem;
+          gap: 0.5rem;
+        }
+
+        .btn {
+          padding: 0.5rem 0.8rem;
+          font-size: 0.85rem;
+        }
+
+        /* Hide less critical controls on mobile */
+        .part-selector,
+        .jump-to-slide label,
+        .jump-to-slide input {
+          display: none;
+        }
+
+        .nav-buttons {
+          width: 100%;
+          justify-content: space-between;
+          gap: 0.5rem;
+        }
+
+        .nav-buttons .btn {
+          flex: 1;
+        }
+
+        #play-btn {
+          max-width: 44px;
+          padding: 0;
+          display: grid;
+          place-items: center;
+        }
+      }
+
+      @media print {
+        .header,
+        .controls,
+        .modal {
+          display: none !important;
+        }
+
+        body {
+          background: white;
+        }
+
+        .slide {
+          position: static;
+          box-shadow: none;
+          page-break-after: always;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="app-loader"
+      style="
+        position: fixed;
+        inset: 0;
+        background: #fff;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease;
+      "
+    >
+      <div
+        style="
+          width: 50px;
+          height: 50px;
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid #6366f1;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        "
+      ></div>
+      <style>
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+    </div>
+    <div class="presentation-container">
+      <div class="header">
+        <div class="header-left">
+          <div class="logo">
+            <div class="logo-mark">🎫</div>
+            <div class="logo-text">
+              <small>Deck Presentasi</small>
+              <strong>BSC Tiket</strong>
+            </div>
+          </div>
+          <span class="topic-pill" id="topic-pill">Intro</span>
+        </div>
+        <div class="header-insights">
+          <div class="progress-stack">
+            <div class="progress-ring">
+              <svg width="60" height="60" viewBox="0 0 120 120">
+                <defs>
+                  <linearGradient
+                    id="ringGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" stop-color="#6366f1" />
+                    <stop offset="100%" stop-color="#ec4899" />
+                  </linearGradient>
+                </defs>
+                <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+                <circle
+                  class="ring-progress"
+                  id="progress-circle"
+                  cx="60"
+                  cy="60"
+                  r="54"
+                ></circle>
+              </svg>
+            </div>
+            <div>
+              <div class="slide-counter" id="slide-counter">Slide 1 / 26</div>
+              <span id="progress-label">0%</span>
+            </div>
+          </div>
+          <div class="header-right">
+            <button class="header-btn" id="grid-btn" title="Grid View (G)">
+              ⊞
+            </button>
+            <button class="header-btn" id="theme-btn" title="Toggle Theme (T)">
+              🌙
+            </button>
+            <button
+              class="header-btn"
+              id="fullscreen-btn"
+              title="Fullscreen (F)"
+            >
+              ⛶
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="slides-container" id="slides-container"></div>
+        <div class="scroll-indicator" id="scroll-indicator" onclick="scrollSlideDown()">
+          <span>Scroll untuk lihat lebih banyak</span>
+          <span>↓</span>
+        </div>
+      </div>
+
+      <div class="modal" id="grid-modal">
+        <div class="modal-content">
+          <button class="modal-close" onclick="closeGrid()">✕</button>
+          <h2>Slide Overview</h2>
+          <div class="slide-grid" id="slide-grid"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="nav-buttons">
+          <button
+            class="btn btn-secondary btn-sm"
+            id="prev-btn"
+            onclick="previousSlide()"
+          >
+            ← Previous
+          </button>
+          <button
+            class="btn btn-primary btn-sm"
+            id="play-btn"
+            onclick="toggleAutoPlay()"
+            title="Auto-play (Space)"
+          >
+            ▶ Play
+          </button>
+          <button
+            class="btn btn-secondary btn-sm"
+            id="next-btn"
+            onclick="nextSlide()"
+          >
+            Next →
+          </button>
+        </div>
+
+        <div class="part-selector">
+          <button class="part-btn active" onclick="jumpToPart(1)">
+            Part 1
+          </button>
+          <button class="part-btn" onclick="jumpToPart(2)">Part 2</button>
+          <button class="part-btn" onclick="jumpToPart(3)">Part 3</button>
+        </div>
+
+        <div class="jump-to-slide">
+          <label for="slide-input">Go to:</label>
+          <input type="number" id="slide-input" min="1" max="26" value="1" />
+          <button class="btn btn-secondary btn-sm" onclick="jumpToSlide()">
+            Jump
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const svgBuilders = {
+        "cover-frame": () => {
+           const bullets = [
+             "Mudah digunakan",
+             "Payment gateway Indonesia",
+             "POS & Scanner system",
+             "Real-time analytics",
+           ];
+           const bulletMarkup = bullets
+             .map((text, idx) => {
+               const y = 190 + idx * 30;
+               return `
+                         <g>
+                             <circle cx="80" cy="${y}" r="6" fill="#22d3ee"></circle>
+                             <text x="100" y="${y + 5}" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" fill="#ffffff">${text}</text>
+                         </g>
+                     `;
+             })
+             .join("");
+           return `
+                     <svg class="diagram-svg" viewBox="0 0 560 320" role="img" aria-label="Highlight fitur utama BSC Tiket">
+                         <defs>
+                             <linearGradient id="coverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                 <stop offset="0%" stop-color="#6366f1" />
+                                 <stop offset="100%" stop-color="#ec4899" />
+                             </linearGradient>
+                         </defs>
+                         <rect x="20" y="20" width="520" height="280" rx="32" fill="url(#coverGradient)" />
+                         <text x="280" y="100" font-family="Inter, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle">BSC TIKET</text>
+                         <text x="280" y="135" font-family="Inter, 'Segoe UI', sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">Platform Ticketing & Event Management</text>
+                         <text x="280" y="165" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Indonesia • Online & On-site • Multi-organization</text>
+                         ${bulletMarkup}
+                     </svg>
+                 `;
+         },
+        "value-matrix": () => {
+          const cards = [
+            {
+              title: "Mudah digunakan",
+              desc: "Interface intuitif untuk semua role",
+            },
+            {
+              title: "Payment gateway lokal",
+              desc: "Midtrans & Xendit 18+ metode bayar",
+            },
+            { title: "On-site support", desc: "POS & Scanner siap pakai" },
+            {
+              title: "Real-time analytics",
+              desc: "Dashboard dan laporan instan",
+            },
+            { title: "Custom komisi", desc: "Atur fee berbeda per organizer" },
+            {
+              title: "Multi-organization",
+              desc: "Satu platform untuk banyak brand",
+            },
+          ];
+          const cardMarkup = cards
+            .map((card, idx) => {
+              const col = idx % 2;
+              const row = Math.floor(idx / 2);
+              const x = 30 + col * 255;
+              const y = 30 + row * 95;
+              return `
+                        <g transform="translate(${x}, ${y})">
+                            <rect width="240" height="80" rx="16" fill="#f1f5ff" stroke="#e0e7ff" />
+                            <text x="16" y="32" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#312e81">${card.title}</text>
+                            <text x="16" y="54" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">${card.desc}</text>
+                        </g>
+                    `;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 540 320" role="img" aria-label="Enam keunggulan BSC Tiket">
+                        ${cardMarkup}
+                    </svg>
+                `;
+        },
+        "role-map": () => {
+          const roles = [
+            { label: "Admin", x: 80, y: 70 },
+            { label: "Organizer", x: 440, y: 70 },
+            { label: "Customer", x: 100, y: 240 },
+            { label: "POS Staff", x: 270, y: 260 },
+            { label: "Scanner", x: 440, y: 230 },
+          ];
+          const nodes = roles
+            .map(
+              (role, idx) => `
+                    <g>
+                        <circle cx="${role.x}" cy="${role.y}" r="42" fill="#eef2ff" stroke="#c7d2fe" />
+                        <text x="${role.x}" y="${role.y + 5}" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81" text-anchor="middle">${role.label}</text>
+                    </g>
+                `,
+            )
+            .join("");
+          const lines = roles
+            .map(
+              (role) => `
+                    <line x1="280" y1="150" x2="${role.x}" y2="${role.y}" stroke="#a5b4fc" stroke-width="2" stroke-dasharray="6 6" />
+                `,
+            )
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 560 320" role="img" aria-label="Peta role pengguna BSC Tiket">
+                        <circle cx="280" cy="150" r="60" fill="#4338ca" opacity="0.12" />
+                        <circle cx="280" cy="150" r="50" fill="#4f46e5" />
+                        <text x="280" y="155" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#ffffff" text-anchor="middle">BSC TIKET</text>
+                        ${lines}
+                        ${nodes}
+                    </svg>
+                `;
+        },
+        "org-architecture": () => {
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 560 280" role="img" aria-label="Struktur multi-organization">
+                        <rect x="200" y="20" width="160" height="60" rx="16" fill="#312e81" />
+                        <text x="280" y="55" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">Platform BSC Tiket</text>
+                        <line x1="280" y1="80" x2="120" y2="130" stroke="#94a3b8" stroke-width="2" />
+                        <line x1="280" y1="80" x2="280" y2="130" stroke="#94a3b8" stroke-width="2" />
+                        <line x1="280" y1="80" x2="440" y2="130" stroke="#94a3b8" stroke-width="2" />
+                        ${["Organizer A", "Organizer B", "Organizer C"]
+                          .map((label, idx) => {
+                            const x = 120 + idx * 160;
+                            return `
+                                <rect x="${x - 60}" y="130" width="120" height="50" rx="12" fill="#e0e7ff" />
+                                <text x="${x}" y="160" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81">${label}</text>
+                                <line x1="${x}" y1="180" x2="${x - 60}" y2="230" stroke="#c7d2fe" stroke-width="2" />
+                                <line x1="${x}" y1="180" x2="${x}" y2="230" stroke="#c7d2fe" stroke-width="2" />
+                                <line x1="${x}" y1="180" x2="${x + 60}" y2="230" stroke="#c7d2fe" stroke-width="2" />
+                            `;
+                          })
+                          .join("")}
+                        ${["Event 1", "Event 2", "Event 3"]
+                          .map((event, idx) => {
+                            const group = idx;
+                            return [0, 1, 2]
+                              .map((col) => {
+                                const x = 60 + col * 160 + idx * 10;
+                                const y = 230 + idx * 10;
+                                return (
+                                  `<rect x="${x}" y="${y}" width="90" height="32" rx="8" fill="#f8fafc" stroke="#e2e8f0" />` +
+                                  `<text x="${x + 45}" y="${y + 20}" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">${event}</text>`
+                                );
+                              })
+                              .join("");
+                          })
+                          .join("")}
+                    </svg>
+                `;
+        },
+        "customer-journey": () => {
+            const steps = [
+              { title: "Cari Event", desc: "Filter kategori & lokasi" },
+              { title: "Pilih Event", desc: "Pilih jadwal & tiket" },
+              { title: "Checkout", desc: "Timer 8 menit" },
+              { title: "Bayar", desc: "18+ metode" },
+              { title: "Terima Tiket", desc: "QR & email otomatis" },
+            ];
+            const gap = 420 / (steps.length - 1);
+            const nodes = steps
+              .map((step, idx) => {
+                const x = 70 + gap * idx;
+                return `
+                                      <circle cx="${x}" cy="308" r="28" fill="#eef2ff" stroke="#c7d2fe" />
+                                      <text x="${x}" y="303" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#312e81" font-weight="600">${idx + 1}</text>
+                                      <text x="${x}" y="348" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81" font-weight="600">${step.title}</text>
+                                      <text x="${x}" y="388" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">${step.desc}</text>
+                                  `;
+              })
+              .join("");
+            const lines = steps
+              .slice(0, -1)
+              .map((_, idx) => {
+                const x1 = 70 + gap * idx + 28;
+                const x2 = 70 + gap * (idx + 1) - 28;
+                return `<line x1="${x1}" y1="328" x2="${x2}" y2="328" stroke="#c7d2fe" stroke-width="4" stroke-linecap="round" />`;
+              })
+              .join("");
+            return `
+            <svg class="diagram-svg" viewBox="0 0 560 420" role="img" aria-label="Customer Journey">
+            <image href="customer journey.png" x="0" y="10" width="560" height="280" />
+            ${lines}
+            ${nodes}
+            </svg>
+            `;
+          },
+        "checkin-flow": () => {
+          return `
+          <svg class="diagram-svg" viewBox="0 0 420 320" role="img" aria-label="Check-in Flow">
+          <image href="scan-qr.png" x="0" y="0" width="420" height="320" />
+          </svg>
+          `;
+        },
+        "organizer-workflow": () => {
+          const steps = [
+            "Input detail event",
+            "Atur tiket & harga",
+            "Review & publikasi",
+          ];
+          const nodes = steps
+            .map((label, idx) => {
+              const x = 70 + idx * 210;
+              return `
+                        <g>
+                            <circle cx="${x}" cy="80" r="32" fill="#e0e7ff" stroke="#c7d2fe" />
+                            <text x="${x}" y="80" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="18" font-weight="600" fill="#312e81">${idx + 1}</text>
+                            <text x="${x}" y="130" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81">${label}</text>
+                        </g>
+                    `;
+            })
+            .join("");
+          const lines = [0, 1]
+            .map((i) => {
+              const x1 = 102 + i * 210;
+              const x2 = x1 + 78;
+              return `<line x1="${x1}" y1="80" x2="${x2}" y2="80" stroke="#c7d2fe" stroke-width="4" marker-end="url(#arrowHead)" />`;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 560 180" role="img" aria-label="Langkah pembuatan event">
+                        <defs>
+                            <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L8,4 L0,8 z" fill="#c7d2fe" />
+                            </marker>
+                        </defs>
+                        ${lines}
+                        ${nodes}
+                    </svg>
+                `;
+        },
+        "organizer-dashboard": () => {
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 560 220" role="img" aria-label="Ringkasan dashboard organizer">
+                        <rect x="20" y="20" width="520" height="180" rx="24" fill="#eef2ff" />
+                        <text x="50" y="70" font-family="Inter, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#312e81">Rp127,5 jt</text>
+                        <text x="50" y="100" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#64748b">Total penjualan • ▲ 15%</text>
+                        <rect x="50" y="130" width="150" height="14" rx="7" fill="#c7d2fe" />
+                        <rect x="50" y="130" width="120" height="14" rx="7" fill="#6366f1" />
+                        <rect x="220" y="130" width="150" height="14" rx="7" fill="#c7d2fe" />
+                        <rect x="220" y="130" width="110" height="14" rx="7" fill="#8b5cf6" />
+                        <rect x="390" y="130" width="150" height="14" rx="7" fill="#c7d2fe" />
+                        <rect x="390" y="130" width="90" height="14" rx="7" fill="#ec4899" />
+                        <text x="125" y="160" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#312e81">VIP 60%</text>
+                        <text x="295" y="160" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">Regular 56%</text>
+                        <text x="465" y="160" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">Pelajar 46%</text>
+                    </svg>
+                `;
+        },
+        "pos-flow": () => {
+          const steps = ["Ambil order", "Input data", "Bayar", "Cetak tiket"];
+          const nodes = steps
+            .map((label, idx) => {
+              const y = 40 + idx * 55;
+              return `
+                        <rect x="140" y="${y}" width="240" height="40" rx="12" fill="#fef3c7" stroke="#fde68a" />
+                        <text x="260" y="${y + 26}" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81">${label}</text>
+                    `;
+            })
+            .join("");
+          const lines = steps
+            .slice(0, -1)
+            .map((_, idx) => {
+              const y = 80 + idx * 55;
+              return `<line x1="260" y1="${y}" x2="260" y2="${y + 20}" stroke="#fbbf24" stroke-width="3" />`;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 520 260" role="img" aria-label="Alur POS walk-in">
+                        ${lines}
+                        ${nodes}
+                    </svg>
+                `;
+        },
+        "scanner-flow": () => {
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 540 220" role="img" aria-label="Proses scanner gate">
+                        <rect x="40" y="40" width="460" height="60" rx="16" fill="#cffafe" stroke="#a5f3fc" />
+                        <text x="270" y="80" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" text-anchor="middle" fill="#312e81">Scan QR → Validasi sistem</text>
+                        <line x1="270" y1="100" x2="270" y2="150" stroke="#67e8f9" stroke-width="3" />
+                        <rect x="60" y="150" width="170" height="50" rx="14" fill="#dcfce7" stroke="#bbf7d0" />
+                        <text x="145" y="180" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" text-anchor="middle" fill="#10b981">VALID ➜ Masuk</text>
+                        <rect x="310" y="150" width="170" height="50" rx="14" fill="#fee2e2" stroke="#fecaca" />
+                        <text x="395" y="180" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" text-anchor="middle" fill="#ef4444">INVALID ➜ Ditolak</text>
+                    </svg>
+                `;
+        },
+        "multi-org": () => {
+          const fees = [3, 5, 7];
+          const markup = fees
+            .map((fee, idx) => {
+              const x = 100 + idx * 180;
+              return `
+                        <rect x="${x - 60}" y="110" width="120" height="60" rx="16" fill="#ecfccb" stroke="#d9f99d" />
+                        <text x="${x}" y="140" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#312e81">Organizer ${String.fromCharCode(65 + idx)}</text>
+                        <text x="${x}" y="160" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#10b981">Fee ${fee}%</text>
+                    `;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 560 240" role="img" aria-label="Model multi-organization">
+                        <rect x="200" y="30" width="160" height="60" rx="16" fill="#bef264" />
+                        <text x="280" y="65" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#312e81">Platform Owner</text>
+                        ${[100, 280, 460].map((x) => `<line x1="280" y1="90" x2="${x}" y2="110" stroke="#a3e635" stroke-width="3" />`).join("")}
+                        ${markup}
+                    </svg>
+                `;
+        },
+        midtrans: () => {
+          const sections = [
+            { title: "Kartu", items: ["Visa", "Mastercard", "JCB"] },
+            { title: "VA", items: ["BCA", "Mandiri", "BNI", "BRI", "Permata"] },
+            { title: "E-Wallet", items: ["GoPay"] },
+          ];
+          const markup = sections
+            .map((section, idx) => {
+              const y = 80 + idx * 40;
+              return `
+                        <text x="50" y="${y}" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81" font-weight="600">${section.title}</text>
+                        <text x="160" y="${y}" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">${section.items.join(", ")}</text>
+                    `;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 520 220" role="img" aria-label="Integrasi Midtrans">
+                        <rect x="30" y="30" width="460" height="160" rx="24" fill="#eef2ff" />
+                        <text x="50" y="60" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#312e81">Midtrans Integration</text>
+                        ${markup}
+                        <text x="50" y="190" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">Snap aman • Verifikasi otomatis • Settlement T+2</text>
+                    </svg>
+                `;
+        },
+        xendit: () => {
+          const sections = [
+            {
+              title: "E-Wallet",
+              items: ["OVO", "Dana", "LinkAja", "ShopeePay"],
+            },
+            { title: "QRIS", items: ["Universal QR", "Semua e-wallet"] },
+            { title: "Retail", items: ["Alfamart", "Indomaret"] },
+          ];
+          const markup = sections
+            .map((section, idx) => {
+              const y = 75 + idx * 40;
+              return `
+                        <text x="50" y="${y}" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81" font-weight="600">${section.title}</text>
+                        <text x="200" y="${y}" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">${section.items.join(", ")}</text>
+                    `;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 520 220" role="img" aria-label="Integrasi Xendit">
+                        <rect x="30" y="30" width="460" height="160" rx="24" fill="#ecfeff" />
+                        <text x="50" y="60" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#312e81">Xendit Integration</text>
+                        ${markup}
+                        <text x="50" y="190" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">Total 18+ metode pembayaran (Midtrans + Xendit)</text>
+                    </svg>
+                `;
+        },
+        "smart-features": () => {
+          const features = [
+            { title: "Timer 8 Menit", desc: "Cegah penimbunan tiket" },
+            { title: "Inventori Real-time", desc: "Stok akurat" },
+            { title: "Notifikasi", desc: "Email otomatis multi tahap" },
+            {
+              title: "Sinkronisasi",
+              desc: "Dashboard & scanner update bersama",
+            },
+          ];
+          const cards = features
+            .map((item, idx) => {
+              const x = 30 + (idx % 2) * 240;
+              const y = 30 + Math.floor(idx / 2) * 110;
+              return `
+                        <g transform="translate(${x}, ${y})">
+                            <rect width="210" height="90" rx="18" fill="#f8fafc" stroke="#e2e8f0" />
+                            <text x="20" y="40" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" font-weight="600" fill="#312e81">${item.title}</text>
+                            <text x="20" y="65" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">${item.desc}</text>
+                        </g>
+                    `;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 520 260" role="img" aria-label="Fitur cerdas BSC Tiket">
+                        ${cards}
+                    </svg>
+                `;
+        },
+        "admin-dashboard": () => {
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 560 260" role="img" aria-label="Dashboard admin">
+                        <rect x="30" y="30" width="500" height="200" rx="28" fill="#0f172a" opacity="0.9" />
+                        <text x="60" y="80" font-family="Inter, 'Segoe UI', sans-serif" font-size="24" fill="#10b981">87,5 jt</text>
+                        <text x="60" y="105" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#64748b">Platform commission</text>
+                        <text x="220" y="80" font-family="Inter, 'Segoe UI', sans-serif" font-size="24" fill="#0ea5e9">247</text>
+                        <text x="220" y="105" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#64748b">Total events</text>
+                        <text x="360" y="80" font-family="Inter, 'Segoe UI', sans-serif" font-size="24" fill="#f59e0b">45</text>
+                        <text x="360" y="105" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#64748b">Organizer aktif</text>
+                        <polyline points="60,170 140,150 220,160 300,130 380,150 460,120" fill="none" stroke="#f472b6" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+                `;
+        },
+        "organizer-tiles": () => {
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 520 220" role="img" aria-label="Ringkasan event organizer">
+                        <rect x="30" y="30" width="460" height="160" rx="24" fill="#fef2f2" />
+                        <text x="60" y="70" font-family="Inter, 'Segoe UI', sans-serif" font-size="18" font-weight="600" fill="#312e81">Konser Jazz Night</text>
+                        <text x="60" y="100" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#64748b">25 Des 2025 • 567/800 tiket</text>
+                        <text x="60" y="125" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#64748b">Revenue Rp142,5 jt</text>
+                        <text x="60" y="160" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">Aksi: Buat Event • Lihat Laporan • Kelola Peserta</text>
+                    </svg>
+                `;
+        },
+        "attendee-database": () => {
+          const rows = [
+            ["VIP", "120", "95% hadir"],
+            ["Regular", "327", "76% hadir"],
+            ["Pelajar", "120", "68% hadir"],
+          ];
+          const rowMarkup = rows
+            .map((row, idx) => {
+              const y = 140 + idx * 32;
+              return `
+                        <text x="60" y="${y}" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#312e81">${row[0]}</text>
+                        <text x="200" y="${y}" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#312e81">${row[1]}</text>
+                        <text x="360" y="${y}" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#312e81">${row[2]}</text>
+                    `;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 520 240" role="img" aria-label="Database peserta">
+                        <rect x="40" y="40" width="440" height="60" rx="14" fill="#eef2ff" />
+                        <text x="60" y="78" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81">Filter: VIP • Regular • Lunas • Pending • Hadir</text>
+                        <line x1="40" y1="120" x2="480" y2="120" stroke="#e2e8f0" />
+                        <text x="60" y="135" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">Jenis</text>
+                        <text x="200" y="135" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">Tiket terjual</text>
+                        <text x="360" y="135" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">Check-in</text>
+                        ${rowMarkup}
+                    </svg>
+                `;
+        },
+        reporting: () => {
+          const panels = [
+            { title: "Penjualan", value: "Rp142,5 jt", sub: "567 tiket" },
+            { title: "Peserta", value: "443 hadir", sub: "78% check-in" },
+            { title: "Keuangan", value: "Rp131,1 jt", sub: "Siap dibayar" },
+          ];
+          const markup = panels
+            .map((panel, idx) => {
+              const x = 40 + idx * 170;
+              return `
+                        <rect x="${x}" y="40" width="150" height="160" rx="18" fill="#f8fafc" stroke="#e2e8f0" />
+                        <text x="${x + 20}" y="70" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81">${panel.title}</text>
+                        <text x="${x + 20}" y="110" font-family="Inter, 'Segoe UI', sans-serif" font-size="18" font-weight="600" fill="#312e81">${panel.value}</text>
+                        <text x="${x + 20}" y="135" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#64748b">${panel.sub}</text>
+                    `;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 540 240" role="img" aria-label="Panel laporan">
+                        ${markup}
+                    </svg>
+                `;
+        },
+        ticket: () => {
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 520 220" role="img" aria-label="Tiket digital">
+                        <defs>
+                            <linearGradient id="ticketGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#4f46e5" />
+                                <stop offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="40" y="40" width="440" height="140" rx="32" fill="url(#ticketGradient)" />
+                        <text x="80" y="90" font-family="Inter, 'Segoe UI', sans-serif" font-size="18" fill="#ffffff">Festival Musik Jakarta</text>
+                        <text x="80" y="115" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#64748b">Sabtu, 20 Jan 2026 • 19:00 WIB</text>
+                        <text x="80" y="145" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#ffffff">VIP • Budi Santoso • #BSC-2025-1234</text>
+                        <rect x="330" y="70" width="110" height="80" rx="12" fill="#fff" />
+                        <text x="385" y="115" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#312e81">QR CODE</text>
+                    </svg>
+                `;
+        },
+        "competitive-edges": () => {
+          const items = [
+            "Biaya lebih murah (3-7%)",
+            "Fitur lengkap POS & Scanner",
+            "Kontrol penuh platform",
+            "Payment gateway lokal",
+            "On-site support",
+            "Mudah digunakan",
+            "Scalable sampai 100k peserta",
+            "Reporting lengkap",
+            "Customer support dedicated",
+            "Potensi revenue berlapis",
+          ];
+          const markup = items
+            .map((item, idx) => {
+              const x = idx % 2 === 0 ? 40 : 280;
+              const y = 50 + Math.floor(idx / 2) * 45;
+              return `
+                        <rect x="${x}" y="${y}" width="220" height="36" rx="12" fill="#f4f4ff" />
+                        <text x="${x + 20}" y="${y + 23}" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#312e81">${idx + 1}. ${item}</text>
+                    `;
+            })
+            .join("");
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 540 300" role="img" aria-label="Keunggulan kompetitif">
+                        ${markup}
+                    </svg>
+                `;
+        },
+        "multi-device": () => {
+          return `
+                    <svg class="diagram-svg" viewBox="0 0 520 220" role="img" aria-label="Akses multi-device">
+                        <rect x="60" y="60" width="120" height="90" rx="16" fill="#e0f2fe" />
+                        <text x="120" y="165" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81">Desktop</text>
+                        <rect x="220" y="40" width="80" height="140" rx="20" fill="#fee2e2" />
+                        <text x="260" y="195" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81">Tablet</text>
+                        <rect x="340" y="60" width="60" height="120" rx="18" fill="#ecfccb" />
+                        <text x="370" y="195" text-anchor="middle" font-family="Inter, 'Segoe UI', sans-serif" font-size="14" fill="#312e81">Mobile</text>
+                    </svg>
+                `;
+        },
+      };
+
+      function renderSvgDiagram(key, payload = {}) {
+        const builder = svgBuilders[key];
+        return builder ? builder(payload) : "";
+      }
+
+      // Slide data
+      const slides = [
+        // PART 1
+        {
+          part: 1,
+          topic: "Pengantar",
+          title: "BSC TIKET",
+          subtitle:
+            "Platform Ticketing & Event Management Terlengkap di Indonesia",
+          content: `
+                    <div class="layout-split">
+                        <div>
+                            <p>BSC Tiket adalah deck interaktif untuk menjelaskan platform ticketing yang menyatukan penjualan online, POS on-site, scanner, serta analitik real-time.</p>
+                            <div class="pill-list">
+                                <span class="pill">Multi-organization</span>
+                                <span class="pill">18+ metode bayar</span>
+                                <span class="pill">POS & scanner</span>
+                                <span class="pill">Real-time analytics</span>
+                            </div>
+                            <div class="info-card">Gunakan slide pembuka ini untuk greeting, perkenalan, dan menyampaikan agenda 30-45 menit.</div>
+                        </div>
+                        <div class="visual-block">
+                            ${renderSvgDiagram("cover-frame")}
+                        </div>
+                    </div>
+                `,
+        },
+        {
+          part: 1,
+          topic: "Platform",
+          title: "Apa itu BSC Tiket?",
+          content: `
+                    <p>Platform lengkap untuk mengelola event dan penjualan tiket secara online maupun offline.</p>
+                    <h3>🎯 Target Pengguna:</h3>
+                    <ul>
+                        <li>Event Organizer</li>
+                        <li>Venue & Theater</li>
+                        <li>Konferensi & Seminar</li>
+                        <li>Penyelenggara Festival</li>
+                        <li>Platform Kursus Online</li>
+                    </ul>
+                    <h3>💡 Solusi Lengkap:</h3>
+                    <ul>
+                        <li>Penjualan tiket online 24/7</li>
+                        <li>Sistem POS untuk lokasi event</li>
+                        <li>Scanner check-in otomatis</li>
+                        <li>Dashboard real-time</li>
+                        <li>Payment gateway terintegrasi</li>
+                    </ul>
+                `,
+        },
+        {
+          part: 1,
+          topic: "Keunggulan",
+          title: "Mengapa BSC Tiket?",
+          content: `
+                    <h3>6 Keunggulan Utama</h3>
+                    <div class="stat-box">✅ <strong>MUDAH DIGUNAKAN</strong><br>Interface intuitif untuk semua user</div>
+                    <div class="stat-box">✅ <strong>PAYMENT GATEWAY INDONESIA</strong><br>Midtrans & Xendit - 18+ metode bayar</div>
+                    <div class="stat-box">✅ <strong>ON-SITE SUPPORT</strong><br>POS & Scanner untuk operasional venue</div>
+                    <div class="stat-box">✅ <strong>REAL-TIME ANALYTICS</strong><br>Dashboard lengkap & laporan instant</div>
+                    <div class="stat-box">✅ <strong>CUSTOM KOMISI</strong><br>Anda yang tentukan fee untuk organizer</div>
+                    <div class="stat-box">✅ <strong>MULTI-ORGANIZATION</strong><br>Satu platform untuk banyak organizer</div>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("value-matrix")}
+                    </div>
+                `,
+        },
+        {
+          part: 1,
+          topic: "Role Pengguna",
+          title: "Siapa Pengguna BSC Tiket?",
+          content: `
+                    <div class="two-column">
+                        <div>
+                            <h3>1. ADMIN</h3>
+                            <p>Pengelola Platform</p>
+                            <ul>
+                                <li>Kelola organizer & event</li>
+                                <li>Atur komisi & payment gateway</li>
+                                <li>Monitor seluruh platform</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>2. ORGANIZER</h3>
+                            <p>Pembuat Event</p>
+                            <ul>
+                                <li>Buat & kelola event</li>
+                                <li>Monitor penjualan tiket</li>
+                                <li>Komunikasi dengan peserta</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div>
+                            <h3>3. CUSTOMER</h3>
+                            <p>Pembeli Tiket</p>
+                            <ul>
+                                <li>Cari & booking tiket</li>
+                                <li>Bayar dengan berbagai metode</li>
+                                <li>Terima tiket digital</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>4. POS STAFF & 5. SCANNER</h3>
+                            <p>Operasional On-Site</p>
+                            <ul>
+                                <li>Jual tiket & cetak instant</li>
+                                <li>Scan QR code tiket</li>
+                                <li>Verifikasi kehadiran real-time</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("role-map")}
+                    </div>
+                `,
+        },
+        {
+          part: 1,
+          topic: "Arsitektur",
+          title: "Arsitektur Platform",
+          content: `
+                    <p>BSC Tiket adalah platform multi-organization yang scalable dan fleksibel.</p>
+                    <h3>Keuntungan Multi-Organization:</h3>
+                    <div class="stat-box">✅ <strong>SKALABILITAS</strong><br>Kelola ratusan organizer dalam 1 platform. Setiap organizer independen.</div>
+                    <div class="stat-box">✅ <strong>FLEKSIBILITAS</strong><br>Komisi berbeda per organizer. Custom branding per organizer (optional).</div>
+                    <div class="stat-box">✅ <strong>KONTROL TERPUSAT</strong><br>Admin kontrol penuh. Laporan konsolidasi. Monitoring real-time.</div>
+                    <div class="stat-box">✅ <strong>PRIVASI DATA</strong><br>Organizer hanya lihat data mereka. Data terisolasi antar organizer.</div>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("org-architecture")}
+                    </div>
+                `,
+        },
+        {
+          part: 1,
+          topic: "Customer Journey",
+          title: "Perjalanan Customer - Discovery",
+          content: `
+                    <h3>Dari Cari Tiket Hingga Checkout</h3>
+                    <div class="stat-box"><strong>1. CARI EVENT</strong><br>📱 Buka website BSC Tiket<br>🔍 Filter: kategori, lokasi, tanggal, harga</div>
+                    <div class="stat-box"><strong>2. PILIH EVENT</strong><br>👁️ Lihat detail lengkap<br>📅 Pilih tanggal/sesi<br>🎫 Pilih jenis tiket</div>
+                    <div class="stat-box"><strong>3. CHECKOUT</strong><br>⏱️ Timer 8 menit (reservasi otomatis)<br>📝 Input data pengunjung</div>
+                    <div class="stat-box"><strong>4. BAYAR</strong><br>💳 Pilih metode pembayaran (18+ metode)</div>
+                    <div class="stat-box"><strong>5. TERIMA TIKET</strong><br>✅ Konfirmasi otomatis<br>📧 Email dengan PDF tiket<br>📱 QR Code untuk check-in</div>
+                    <h3>Fitur Smart Checkout:</h3>
+                    <ul>
+                        <li><strong>⏱️ Timer 8 Menit:</strong> Cegah penimbunan tiket, fair distribution, inventory akurat</li>
+                        <li><strong>18+ Metode Pembayaran:</strong> Customer pilih favorit, verifikasi otomatis, konfirmasi instant</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("customer-journey")}
+                    </div>
+                `,
+        },
+        {
+          part: 1,
+          topic: "Check-in",
+          title: "Perjalanan Customer - Hari Event",
+          content: `
+                    <h3>Pengalaman Check-in yang Mulus</h3>
+                    <div class="stat-box"><strong>Customer Tunjukkan Tiket</strong><br>(Cetak atau HP)</div>
+                    <div class="stat-box"><strong>Petugas Scan QR</strong><br>Verifikasi Sistem</div>
+                    <h3>Validasi Otomatis:</h3>
+                    <ul>
+                        <li>✓ Status pembayaran</li>
+                        <li>✓ Tidak duplikat</li>
+                        <li>✓ Tanggal/sesi benar</li>
+                        <li>✓ Tidak dibatalkan</li>
+                    </ul>
+                    <h3>Alasan Invalid:</h3>
+                    <ul>
+                        <li>✗ Belum bayar</li>
+                        <li>✗ Sudah di-scan</li>
+                        <li>✗ Salah tanggal</li>
+                        <li>✗ Tiket dibatalkan</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("checkin-flow")}
+                    </div>
+                `,
+        },
+        {
+          part: 1,
+          topic: "Organizer",
+          title: "Alur Kerja Organizer - Buat Event",
+          content: `
+                    <h3>Mudah & Cepat Buat Event dalam 5-10 Menit!</h3>
+                    <div class="stat-box"><strong>LANGKAH 1: INPUT DETAIL EVENT</strong><br>
+                    • Nama event • Deskripsi & info • Kategori • Tanggal & waktu • Lokasi/venue • Upload gambar/poster • Tipe: Fisik/Online/Hybrid</div>
+                    <div class="stat-box"><strong>LANGKAH 2: ATUR TIKET & HARGA</strong><br>
+                    • VIP Rp 500.000 • Regular Rp 250.000 • Pelajar Rp 100.000 • Gratis Rp 0<br>
+                    • Atur kuantitas • Atur periode penjualan</div>
+                    <div class="stat-box"><strong>LANGKAH 3: REVIEW & PUBLIKASI</strong><br>
+                    • Preview semua detail • Submit untuk approval (opsional) • Publikasi → LIVE!</div>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("organizer-workflow")}
+                    </div>
+                `,
+        },
+        {
+          part: 1,
+          topic: "Dashboard",
+          title: "Dashboard Organizer",
+          content: `
+                    <h3>Monitoring Real-Time</h3>
+                    <div class="stat-box">💰 <strong>TOTAL PENJUALAN</strong><br>Rp 127.500.000 ▲ +15% dari minggu lalu</div>
+                    <div class="stat-box">🎫 <strong>TIKET TERJUAL</strong><br>VIP: 120/200 (60%) • Regular: 450/800 (56%) • Pelajar: 230/500 (46%)</div>
+                    <div class="stat-box">👥 <strong>TOTAL PESERTA: 800</strong><br>✅ Check-in: 456 (57%) • ⏳ Pending: 344 (43%)</div>
+                    <h3>Fitur Dashboard:</h3>
+                    <ul>
+                        <li><strong>Real-Time Updates:</strong> Setiap transaksi langsung tampil, tidak perlu refresh manual</li>
+                        <li><strong>Analytics Lengkap:</strong> Grafik penjualan, breakdown per tiket, tingkat check-in</li>
+                        <li><strong>Quick Actions:</strong> Export ke CSV/PDF, kirim email massal, manage peserta</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("organizer-dashboard")}
+                    </div>
+                `,
+        },
+        {
+          part: 1,
+          topic: "On-site",
+          title: "Operasi Di Lokasi - POS",
+          content: `
+                    <h3>Sistem Point of Sale untuk Walk-in</h3>
+                    <div class="stat-box"><strong>1. Staff Ambil Order</strong><br>2x VIP, 1x Regular</div>
+                    <div class="stat-box"><strong>2. Input Data</strong><br>Nama, Email, HP</div>
+                    <div class="stat-box"><strong>3. Total & Bayar</strong><br>Total: Rp 1.250K [Tunai]</div>
+                    <div class="stat-box"><strong>4. CETAK TIKET</strong><br>✓ QR Generated • ✓ Email dikirim</div>
+                    <h3>Keunggulan POS:</h3>
+                    <div class="stat-box">✅ <strong>TERIMA TUNAI</strong><br>Walk-in sales support. Tidak perlu internet untuk cash.</div>
+                    <div class="stat-box">✅ <strong>INSTANT TICKET</strong><br>Cetak langsung. QR code otomatis.</div>
+                    <div class="stat-box">✅ <strong>SYNC REAL-TIME</strong><br>Update inventory langsung. Tampil di dashboard organizer.</div>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("pos-flow")}
+                    </div>
+                `,
+        },
+
+        // PART 2
+        {
+          part: 2,
+          topic: "Scanner",
+          title: "Operasi Di Lokasi - Scanner",
+          content: `
+                    <h3>Check-in Cepat & Aman</h3>
+                    <div class="stat-box"><strong>1. SCAN QR CODE</strong><br>Customer tunjukkan QR dengan device</div>
+                    <div class="stat-box"><strong>2. VALIDASI SISTEM</strong><br>✓ Sudah bayar? • ✓ Belum scan? • ✓ Tanggal benar? • ✓ Tidak batal?</div>
+                    <div class="stat-box"><strong>3. HASIL</strong><br>VALID → ✅ MASUK | INVALID → ❌ TOLAK</div>
+                    <h3>Fitur Scanner:</h3>
+                    <ul>
+                        <li><strong>Verifikasi Real-Time:</strong> Check database instant, prevent duplicate entry</li>
+                        <li><strong>Multi-Gate Support:</strong> Banyak scanner bersamaan, sync otomatis</li>
+                        <li><strong>Offline Mode (coming soon):</strong> Tetap bisa scan tanpa internet, sync saat online kembali</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("scanner-flow")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Model Bisnis",
+          title: "Multi-Organization",
+          content: `
+                    <h3>Satu Platform, Banyak Organizer</h3>
+                    <p>Anda sebagai platform owner dengan fleksibilitas komisi per organizer:</p>
+                    <div class="stat-box">Organizer A: 3% (partner strategis)</div>
+                    <div class="stat-box">Organizer B: 5% (standar)</div>
+                    <div class="stat-box">Organizer C: 7% (new organizer)</div>
+                    <h3>Keuntungan Model Ini:</h3>
+                    <div class="stat-box"><strong>UNTUK ANDA:</strong><br>Revenue dari semua organizer • Kontrol penuh platform • Scalable business model</div>
+                    <div class="stat-box"><strong>UNTUK ORGANIZER:</strong><br>Fee lebih murah dari kompetitor • Platform profesional • Support lengkap</div>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("multi-org")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Pembayaran",
+          title: "Payment Gateway - Midtrans",
+          content: `
+                    <h3>11 Metode Pembayaran</h3>
+                    <div class="stat-box"><strong>💳 KARTU KREDIT/DEBIT</strong><br>Visa • Mastercard • JCB</div>
+                    <div class="stat-box"><strong>🏦 VIRTUAL ACCOUNT</strong><br>BCA • Mandiri • BNI • BRI • Permata Virtual Account</div>
+                    <div class="stat-box"><strong>📱 E-WALLET</strong><br>GoPay</div>
+                    <h3>Keunggulan Midtrans:</h3>
+                    <ul>
+                        <li>✅ Halaman pembayaran aman (Snap)</li>
+                        <li>✅ Verifikasi otomatis</li>
+                        <li>✅ Notifikasi real-time</li>
+                        <li>✅ Settlement T+2</li>
+                        <li>✅ 3D Secure support</li>
+                        <li>✅ Fee: ~2.9% + Rp 2.000</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("midtrans")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Pembayaran",
+          title: "Payment Gateway - Xendit",
+          content: `
+                    <h3>7 Metode Pembayaran Tambahan</h3>
+                    <div class="stat-box"><strong>📱 E-WALLET</strong><br>OVO • Dana • LinkAja • ShopeePay</div>
+                    <div class="stat-box"><strong>🔲 QRIS</strong><br>Universal QR • Semua e-wallet support</div>
+                    <div class="stat-box"><strong>🏪 RETAIL OUTLET</strong><br>Alfamart • Indomaret</div>
+                    <h3>Total: 18+ Metode Pembayaran</h3>
+                    <table style="width: 100%; margin-top: 1rem; border-collapse: collapse;">
+                        <tr style="border-bottom: 2px solid var(--border);">
+                            <td style="padding: 0.5rem; font-weight: bold;">Gateway</td>
+                            <td style="padding: 0.5rem; font-weight: bold;">Metode</td>
+                            <td style="padding: 0.5rem; font-weight: bold;">Settlement</td>
+                            <td style="padding: 0.5rem; font-weight: bold;">Fee</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border);">
+                            <td style="padding: 0.5rem;">Midtrans</td>
+                            <td style="padding: 0.5rem;">11</td>
+                            <td style="padding: 0.5rem;">T+2</td>
+                            <td style="padding: 0.5rem;">~2.9%</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem;">Xendit</td>
+                            <td style="padding: 0.5rem;">7</td>
+                            <td style="padding: 0.5rem;">T+1</td>
+                            <td style="padding: 0.5rem;">~2-3%</td>
+                        </tr>
+                    </table>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("xendit")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Automasi",
+          title: "Fitur Cerdas",
+          content: `
+                    <h3>Technology yang Memudahkan</h3>
+                    <div class="stat-box"><strong>1️⃣ TIMER 8 MENIT</strong><br>Tiket Direservasi: 8:00 | Selesaikan pembayaran!<br><strong>Benefit:</strong> Cegah penimbunan, fair distribution</div>
+                    <div class="stat-box"><strong>2️⃣ INVENTORI REAL-TIME</strong><br>VIP Ticket | Tersedia: 47/200 | Direservasi: 12 | Terjual: 141<br><strong>Benefit:</strong> Akurat, tidak overselling</div>
+                    <div class="stat-box"><strong>3️⃣ NOTIFIKASI OTOMATIS</strong><br>✉️ Konfirmasi Booking • ✉️ Bukti Pembayaran • ✉️ Tiket PDF • ✉️ Pengingat Event (H-1)<br><strong>Benefit:</strong> Kurangi beban customer service</div>
+                    <div class="stat-box"><strong>4️⃣ SINKRONISASI LANGSUNG</strong><br>Booking Baru → Update ke SEMUA (Dashboard, Email, Scanner)<br><strong>Benefit:</strong> Real-time, tidak ada delay</div>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("smart-features")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Admin",
+          title: "Dashboard Admin",
+          content: `
+                    <h3>Kontrol Penuh Platform</h3>
+                    <div class="stat-box"><strong>📊 PLATFORM STATISTICS</strong><br>
+                    Total Events: 247 (89 aktif) • Total Organizers: 45 (3 pending) • Total Customers: 15,234 • Revenue Bulan Ini: Rp 1.2 Miliar</div>
+                    <div class="stat-box"><strong>🏆 TOP 5 EVENTS</strong><br>
+                    1. Festival Musik Jakarta Rp 245 Jt • 2. Seminar Bisnis 2025 Rp 180 Jt • 3. Konser Indie Rp 156 Jt • 4. Workshop Marketing Rp 123 Jt • 5. Tech Expo Rp 98 Jt</div>
+                    <div class="stat-box"><strong>💰 COMMISSION TRACKING</strong><br>
+                    Platform Commission: Rp 87.500.000 • Organizer Earnings: Rp 1.112.500.000 • Payout Pending: Rp 45.000.000</div>
+                    <div class="stat-box"><strong>📈 TREND ANALYSIS</strong><br>
+                    Sales Growth: ▲ +23% • New Customers: ▲ +456 • Event Success: ▲ 94% positive rating</div>
+                    <h3>Aksi Cepat Admin:</h3>
+                    <ul>
+                        <li>Approve pending organizers</li>
+                        <li>Review event baru</li>
+                        <li>Kelola payment gateways</li>
+                        <li>Export laporan keuangan</li>
+                        <li>Monitor system health</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("admin-dashboard")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Organizer",
+          title: "Dashboard Organizer Detail",
+          content: `
+                    <h3>Tools Lengkap untuk Organizer</h3>
+                    <div class="stat-box"><strong>🎭 Konser Jazz Night</strong><br>25 Des 2025 • 🎫 567/800 terjual • 💰 Rp 142.500.000</div>
+                    <div class="stat-box"><strong>AKSI CEPAT</strong><br>[➕ Buat Event Baru] • [📊 Laporan Penjualan] • [👥 Kelola Peserta] • [📧 Email Massal]</div>
+                    <div class="stat-box"><strong>BOOKING TERBARU (Real-time)</strong><br>
+                    🆕 Budi - 2x VIP (5 menit lalu) • 🆕 Siti - 1x Regular (12 menit) • 🆕 Andi - 4x Group (23 menit)</div>
+                    <h3>Detail Performa Event:</h3>
+                    <ul>
+                        <li><strong>Penjualan Kotor:</strong> Rp 142.500.000</li>
+                        <li><strong>Biaya Platform (5%):</strong> Rp 7.125.000</li>
+                        <li><strong>Biaya Payment (3%):</strong> Rp 4.275.000</li>
+                        <li><strong>Pendapatan Bersih:</strong> Rp 131.100.000</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("organizer-tiles")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Peserta",
+          title: "Manajemen Peserta",
+          content: `
+                    <h3>Database & Komunikasi Lengkap</h3>
+                    <div class="stat-box"><strong>📋 FILTER & CARI</strong><br>Cari: [____________] 🔍<br>Filter: [Semua] [VIP] [Regular] [Lunas] [Pending] [Hadir]</div>
+                    <div class="stat-box"><strong>📊 ANALYTICS</strong><br>
+                    Total Terjual: 567 • Tingkat Check-in: 78% • Tidak Hadir: 22% • Rata-rata Nilai: Rp 251.234<br>
+                    Demografi: Usia 25-34: 45% • L:55% | P:45% • Jakarta: 67%</div>
+                    <h3>Fitur Komunikasi:</h3>
+                    <ul>
+                        <li><strong>📧 Email Massal:</strong> Kirim ke semua/sebagian peserta, template custom, track delivery</li>
+                        <li><strong>📥 Export Data:</strong> CSV (Excel compatible), semua data peserta, custom field selection</li>
+                        <li><strong>🎫 Resend Ticket:</strong> Kirim ulang tiket hilang, individual atau bulk</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("attendee-database")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Pelaporan",
+          title: "Sistem Pelaporan",
+          content: `
+                    <h3>Laporan Lengkap & Akurat</h3>
+                    <div class="stat-box"><strong>📊 LAPORAN PENJUALAN</strong><br>
+                    Total Pendapatan: Rp 142.500.000 • Total Tiket: 567 terjual<br>
+                    Metode Pembayaran: Kartu Kredit 234 (41%) • Virtual Account 189 (33%) • E-wallet 123 (22%) • Tunai/POS 21 (4%)</div>
+                    <div class="stat-box"><strong>📋 LAPORAN PESERTA</strong><br>
+                    Total Terdaftar: 567 • Checked-in: 443 (78%) • Tidak Hadir: 124 (22%)<br>
+                    Per Jenis Tiket: VIP 120 • Regular 327 • Pelajar 120</div>
+                    <div class="stat-box"><strong>💰 LAPORAN KEUANGAN</strong><br>
+                    Penjualan Kotor: Rp 142.5 Jt • Biaya Platform: Rp 7.1 Jt • Payment Gateway: Rp 4.3 Jt • Pendapatan Bersih: Rp 131.1 Jt • Status: ✅ Siap dibayar</div>
+                    <h3>Format Export:</h3>
+                    <ul>
+                        <li>📄 CSV (Excel)</li>
+                        <li>📊 PDF (Print)</li>
+                        <li>📧 Email otomatis</li>
+                        <li>📅 Jadwal otomatis</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("reporting")}
+                    </div>
+                `,
+        },
+        {
+          part: 2,
+          topic: "Tiket",
+          title: "Tiket QR Code",
+          content: `
+                    <h3>Tiket Digital Profesional</h3>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("ticket")}
+                    </div>
+                    <h3>Fitur Tiket:</h3>
+                    <ul>
+                        <li>✅ <strong>Unique QR code</strong> per tiket</li>
+                        <li>✅ <strong>Design profesional</strong> & branded</li>
+                        <li>✅ <strong>Multi-format:</strong> PDF (email), Mobile display, Print-ready</li>
+                        <li>✅ <strong>Keamanan:</strong> Encrypted QR, Cannot duplicate, Real-time validation</li>
+                        <li>✅ <strong>Delivery:</strong> Email otomatis, Download dari dashboard, Resend kapan saja</li>
+                    </ul>
+                `,
+        },
+
+        // PART 3
+        {
+          part: 3,
+          topic: "Use Case",
+          title: "Jenis Event Yang Didukung",
+          content: `
+                    <h3>Fleksibel untuk Semua Tipe Event</h3>
+                    <div class="stat-box"><strong>🎪 EVENT SEDERHANA (One-time)</strong><br>
+                    Konser Musik • 📅 Sabtu, 20 Januari 2026 • 🕐 19:00 - 23:00 WIB • 📍 GBK Stadium</div>
+                    <div class="stat-box"><strong>🔄 EVENT BERULANG (Multiple sessions)</strong><br>
+                    Kelas Yoga Pagi • 📅 Setiap Senin & Rabu • 🕐 06:00 - 07:30 WIB<br>
+                    Sessions: 8 Jan - 20/30 booked • 10 Jan - 15/30 booked • 15 Jan - 8/30 booked</div>
+                    <div class="stat-box"><strong>💻 EVENT ONLINE (Virtual)</strong><br>
+                    Webinar Marketing Digital • 📅 Minggu, 12 Januari 2026 • 🕐 14:00 - 16:00 WIB • 🌐 Zoom Meeting</div>
+                    <div class="stat-box"><strong>🔀 EVENT HYBRID (Fisik + Online)</strong><br>
+                    Conference Tech 2026 • 📅 Selasa, 28 Januari 2026 • 🕐 09:00 - 17:00 WIB<br>
+                    Options: 📍 On-site (200 kursi) • 💻 Live Stream (unlimited)</div>
+                `,
+        },
+        {
+          part: 3,
+          topic: "Use Case",
+          title: "Use Case - Event Organizer",
+          content: `
+                    <h3>Untuk Event Organizer Profesional</h3>
+                    <div class="stat-box"><strong>Profil:</strong> PT Event Productions<br>
+                    • 15-20 event per tahun<br>
+                    • Konser, festival, pameran<br>
+                    • 1,000 - 50,000 tiket per event</div>
+                    <div class="stat-box"><strong>Kebutuhan:</strong><br>
+                    ✓ Platform profesional & branded ✓ Banyak metode pembayaran ✓ Monitoring real-time<br>
+                    ✓ Support on-site (POS & Scanner) ✓ Analytics detail ✓ Fee kompetitif</div>
+                    <h3>Manfaat BSC Tiket:</h3>
+                    <div class="stat-box"><strong>💰 HEMAT BIAYA</strong><br>Fee 3-5% vs kompetitor 5-10% • Save Rp 5-10 juta per event besar</div>
+                    <div class="stat-box"><strong>⚡ EFISIENSI OPERASIONAL</strong><br>Otomasi penuh booking & payment • Dashboard real-time • POS & Scanner terintegrasi</div>
+                    <div class="stat-box"><strong>📊 DATA & INSIGHTS</strong><br>Analisis penjualan detail • Customer behavior • Tingkat konversi</div>
+                `,
+        },
+        {
+          part: 3,
+          topic: "Use Case",
+          title: "Use Case - Venue & Theater",
+          content: `
+                    <h3>Untuk Venue dengan Event Reguler</h3>
+                    <div class="stat-box"><strong>Profil:</strong> Teater XYZ<br>
+                    • 4-8 pertunjukan per minggu<br>
+                    • 200-500 kursi per show<br>
+                    • Customer reguler & member<br>
+                    • Walk-in sales tinggi</div>
+                    <div class="stat-box"><strong>Kebutuhan:</strong><br>
+                    ✓ Recurring event management ✓ Customer database ✓ POS untuk walk-in<br>
+                    ✓ Check-in mudah & cepat ✓ Season ticket support</div>
+                    <h3>Manfaat BSC Tiket:</h3>
+                    <div class="stat-box"><strong>🔄 OTOMASI RECURRING</strong><br>Setup sekali untuk weekly show • Duplikasi event mudah</div>
+                    <div class="stat-box"><strong>👥 CRM BUILT-IN</strong><br>Database customer • Email communication • Member special pricing (custom)</div>
+                    <div class="stat-box"><strong>💵 POS INTEGRATION</strong><br>Jual tiket di loket • Payment tunai • Print instant</div>
+                `,
+        },
+        {
+          part: 3,
+          topic: "Use Case",
+          title: "Use Case - Seminar & Conference",
+          content: `
+                    <h3>Untuk Penyelenggara Seminar Bisnis</h3>
+                    <div class="stat-box"><strong>Profil:</strong> Seminar Bisnis Indonesia<br>
+                    • Seminar bulanan<br>
+                    • 100-500 peserta<br>
+                    • Multiple ticket tiers<br>
+                    • Butuh data peserta untuk sertifikat</div>
+                    <div class="stat-box"><strong>Kebutuhan:</strong><br>
+                    ✓ Form registrasi custom ✓ Early bird pricing ✓ Export data peserta<br>
+                    ✓ Email reminder otomatis ✓ Check-in tracking</div>
+                    <h3>Manfaat BSC Tiket:</h3>
+                    <div class="stat-box"><strong>📋 DATA COLLECTION</strong><br>Form custom fields • Export lengkap ke Excel • Integrasi dengan sistem sertifikat</div>
+                    <div class="stat-box"><strong>🏷️ FLEXIBLE PRICING</strong><br>Early bird discount • Group discount • Promo code support</div>
+                    <div class="stat-box"><strong>📧 COMMUNICATION</strong><br>Email konfirmasi • Reminder H-1 • Thank you email • Survey post-event</div>
+                `,
+        },
+        {
+          part: 3,
+          topic: "Keunggulan",
+          title: "10 Keunggulan Kompetitif",
+          content: `
+                    <h3>Mengapa BSC Tiket Unggul?</h3>
+                    <div class="stat-box">1️⃣ <strong>BIAYA LEBIH MURAH</strong> - Custom fee 3-7% vs kompetitor 5-10%</div>
+                    <div class="stat-box">2️⃣ <strong>FITUR LEBIH LENGKAP</strong> - POS, Scanner, Offline payment</div>
+                    <div class="stat-box">3️⃣ <strong>KONTROL PENUH</strong> - Anda yang manage, bukan vendor</div>
+                    <div class="stat-box">4️⃣ <strong>PAYMENT GATEWAY LOKAL</strong> - 18+ metode Indonesia</div>
+                    <div class="stat-box">5️⃣ <strong>ON-SITE SUPPORT</strong> - POS & Scanner included</div>
+                    <div class="stat-box">6️⃣ <strong>MUDAH DIGUNAKAN</strong> - Interface intuitif</div>
+                    <div class="stat-box">7️⃣ <strong>SCALABLE</strong> - 100 - 100,000+ peserta</div>
+                    <div class="stat-box">8️⃣ <strong>REPORTING LENGKAP</strong> - Real-time dashboard & analytics</div>
+                    <div class="stat-box">9️⃣ <strong>CUSTOMER SUPPORT</strong> - Dedicated support & training</div>
+                    <div class="stat-box">🔟 <strong>POTENSI REVENUE</strong> - Multiple revenue streams</div>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("competitive-edges")}
+                    </div>
+                `,
+        },
+        {
+          part: 3,
+          topic: "Multi-device",
+          title: "Akses Multi-Device",
+          content: `
+                    <h3>Platform yang Fleksibel</h3>
+                    <div class="two-column">
+                        <div>
+                            <h4>💻 DESKTOP/LAPTOP</h4>
+                            <ul>
+                                <li>• Full features</li>
+                                <li>• Dashboard organizer</li>
+                                <li>• Admin panel</li>
+                                <li>• Best untuk manage</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>📱 SMARTPHONE</h4>
+                            <ul>
+                                <li>• Customer booking</li>
+                                <li>• Lihat & show tiket</li>
+                                <li>• POS operations</li>
+                                <li>• Scanner functions</li>
+                                <li>• Mobile-optimized</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>📲 TABLET</h4>
+                        <ul>
+                            <li>• POS staff</li>
+                            <li>• Scanner operations</li>
+                            <li>• On-site sales</li>
+                        </ul>
+                    </div>
+                    <h3>Responsive Design:</h3>
+                    <ul>
+                        <li>✅ <strong>Web-based</strong> - Tidak perlu install</li>
+                        <li>✅ <strong>Mobile-first</strong> - Smooth di semua device</li>
+                        <li>✅ <strong>Cross-platform</strong> - iOS, Android, Windows</li>
+                        <li>✅ <strong>Offline mode</strong> - untuk scanner</li>
+                    </ul>
+                    <div class="visual-block">
+                        ${renderSvgDiagram("multi-device")}
+                    </div>
+                `,
+        },
+      ];
+
+      let currentSlide = 0;
+      let autoPlayInterval = null;
+
+      const slidesContainer = document.getElementById("slides-container");
+      const slideInput = document.getElementById("slide-input");
+      const slideCounterEl = document.getElementById("slide-counter");
+      const topicPill = document.getElementById("topic-pill");
+      const progressCircle = document.getElementById("progress-circle");
+      const progressLabel = document.getElementById("progress-label");
+      const themeBtn = document.getElementById("theme-btn");
+      const gridBtn = document.getElementById("grid-btn");
+      const fullscreenBtn = document.getElementById("fullscreen-btn");
+      const gridModal = document.getElementById("grid-modal");
+      const slideGrid = document.getElementById("slide-grid");
+      const playBtn = document.getElementById("play-btn");
+      const partButtons = document.querySelectorAll(".part-btn");
+      const circumference = 2 * Math.PI * 54;
+
+      gridBtn.addEventListener("click", toggleGrid);
+      themeBtn.addEventListener("click", toggleTheme);
+      fullscreenBtn.addEventListener("click", toggleFullscreen);
+
+      function initSlides() {
+        slides.forEach((slide, index) => {
+          const slideEl = document.createElement("div");
+          slideEl.className = "slide" + (index === 0 ? " active" : "");
+          slideEl.innerHTML = `
+                    <div>
+                        ${slide.title ? `<h1>${slide.title}</h1>` : ""}
+                        ${slide.subtitle ? `<p class="subtitle" style="font-size: 1.1rem; color: #64748b; margin-bottom: 2rem;">${slide.subtitle}</p>` : ""}
+                        ${slide.content}
+                    </div>
+                `;
+          slidesContainer.appendChild(slideEl);
+        });
+        updateSlideGrid();
+
+        // Hide Loader
+        const loader = document.getElementById("app-loader");
+        if (loader) {
+          loader.style.opacity = "0";
+          setTimeout(() => loader.remove(), 500);
+        }
+      }
+
+      function updateSlide() {
+        const slideElements = document.querySelectorAll(".slide");
+
+        slideElements.forEach((el, idx) => {
+          if (idx === currentSlide) {
+            // Smoother animation trigger
+            el.classList.remove("active");
+            void el.offsetWidth; // force reflow
+
+            el.classList.remove("prev", "next");
+            el.classList.add("active");
+
+            // Ensure scrolling resets
+            el.scrollTop = 0;
+            
+            // Check if slide has overflow content after animation
+            setTimeout(() => checkScrollIndicator(el), 100);
+          } else {
+            el.classList.remove("active");
+            if (idx < currentSlide) {
+              el.classList.remove("next");
+              el.classList.add("prev");
+            } else {
+              el.classList.remove("prev");
+              el.classList.add("next");
+            }
+          }
+        });
+
+        slideInput.value = currentSlide + 1;
+        const percent = Math.round(((currentSlide + 1) / slides.length) * 100);
+        slideCounterEl.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+        topicPill.textContent = slides[currentSlide].topic || "Slide";
+        progressCircle.style.strokeDashoffset =
+          circumference - (percent / 100) * circumference;
+        progressLabel.textContent = `${percent}%`;
+        updatePartSelector();
+        localStorage.setItem("currentSlide", currentSlide);
+      }
+
+      function checkScrollIndicator(slideElement) {
+        const indicator = document.getElementById("scroll-indicator");
+        if (!slideElement || !indicator) return;
+        
+        const hasOverflow = slideElement.scrollHeight > slideElement.clientHeight;
+        const isAtBottom = slideElement.scrollHeight - slideElement.scrollTop <= slideElement.clientHeight + 10;
+        
+        if (hasOverflow && !isAtBottom) {
+          indicator.classList.add("visible");
+        } else {
+          indicator.classList.remove("visible");
+        }
+      }
+
+      function scrollSlideDown() {
+        const activeSlide = document.querySelector(".slide.active");
+        if (activeSlide) {
+          activeSlide.scrollBy({
+            top: 300,
+            behavior: "smooth"
+          });
+          
+          // Recheck indicator after scroll
+          setTimeout(() => checkScrollIndicator(activeSlide), 300);
+        }
+      }
+
+      function updatePartSelector() {
+        const currentPart = slides[currentSlide].part;
+        partButtons.forEach((btn, idx) => {
+          btn.classList.toggle("active", idx + 1 === currentPart);
+        });
+      }
+
+      function updateSlideGrid() {
+        slideGrid.innerHTML = "";
+        slides.forEach((slide, idx) => {
+          const item = document.createElement("div");
+          item.className =
+            "grid-item" + (idx === currentSlide ? " active" : "");
+          const topicLabel = slide.topic ? `${slide.topic}` : "Slide";
+          item.innerHTML = `<strong>Slide ${idx + 1}</strong><br><span>${topicLabel}</span>`;
+          item.onclick = () => {
+            currentSlide = idx;
+            updateSlide();
+            closeGrid();
+          };
+          slideGrid.appendChild(item);
+        });
+      }
+
+      function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+          currentSlide++;
+          updateSlide();
+        }
+      }
+
+      function previousSlide() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          updateSlide();
+        }
+      }
+
+      function jumpToPart(part) {
+        const partStart = slides.findIndex((s) => s.part === part);
+        if (partStart !== -1) {
+          currentSlide = partStart;
+          updateSlide();
+        }
+      }
+
+      function jumpToSlide() {
+        const slideNum = parseInt(slideInput.value) - 1;
+        if (slideNum >= 0 && slideNum < slides.length) {
+          currentSlide = slideNum;
+          updateSlide();
+        }
+      }
+
+      function toggleAutoPlay() {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+          autoPlayInterval = null;
+          playBtn.textContent = "▶ Play";
+        } else {
+          autoPlayInterval = setInterval(() => {
+            if (currentSlide < slides.length - 1) {
+              nextSlide();
+            } else {
+              clearInterval(autoPlayInterval);
+              autoPlayInterval = null;
+              playBtn.textContent = "▶ Play";
+            }
+          }, 5000);
+          playBtn.textContent = "⏸ Pause";
+        }
+      }
+
+      function toggleTheme() {
+        document.body.classList.toggle("dark-mode");
+        themeBtn.textContent = document.body.classList.contains("dark-mode")
+          ? "☀️"
+          : "🌙";
+        localStorage.setItem(
+          "theme",
+          document.body.classList.contains("dark-mode") ? "dark" : "light",
+        );
+      }
+
+      function toggleGrid() {
+        gridModal.classList.toggle("active");
+        updateSlideGrid();
+      }
+
+      function closeGrid() {
+        gridModal.classList.remove("active");
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement
+            .requestFullscreen()
+            .catch((err) => console.log(err));
+        } else {
+          document.exitFullscreen();
+        }
+      }
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        if (e.target.tagName === "INPUT") return;
+        switch (e.key) {
+          case "ArrowRight":
+          case " ":
+            e.preventDefault();
+            nextSlide();
+            break;
+          case "ArrowLeft":
+            e.preventDefault();
+            previousSlide();
+            break;
+          case "g":
+          case "G":
+            toggleGrid();
+            break;
+          case "t":
+          case "T":
+            toggleTheme();
+            break;
+          case "f":
+          case "F":
+            toggleFullscreen();
+            break;
+          case "Escape":
+            closeGrid();
+            break;
+        }
+      });
+
+      // Initialize
+      initSlides();
+      updateSlide();
+
+      // Load saved state
+      const savedSlide = localStorage.getItem("currentSlide");
+      if (savedSlide) {
+        currentSlide = parseInt(savedSlide);
+        updateSlide();
+      }
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        toggleTheme();
+      }
+
+      // Click outside modal to close
+      gridModal.addEventListener("click", (e) => {
+        if (e.target === gridModal) closeGrid();
+      });
+
+      // Add scroll listener to all slides to update indicator
+      document.addEventListener("scroll", (e) => {
+        if (e.target.classList && e.target.classList.contains("slide") && e.target.classList.contains("active")) {
+          checkScrollIndicator(e.target);
+        }
+      }, true);
+
+      // Auto-scale slides to fit container
+      function resizeSlides() {
+        const container = document.getElementById("slides-container");
+        const slides = document.querySelectorAll(".slide");
+        if (!container || slides.length === 0) return;
+
+        const containerWidth = container.clientWidth - 40; // padding
+        const containerHeight = container.clientHeight - 40;
+
+        const baseWidth = 1200;
+        const baseHeight = 675; // 16:9 aspect ratio
+
+        const scale = Math.min(
+          containerWidth / baseWidth,
+          containerHeight / baseHeight,
+        );
+
+        // Apply scale to CSS variable
+        document.documentElement.style.setProperty("--slide-scale", scale);
+      }
+
+      window.addEventListener("resize", resizeSlides);
+      // Call once on init
+      setTimeout(resizeSlides, 100);
+
+      // Mobile Swipe Support
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      // Use existing slidesContainer variable
+
+      slidesContainer.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true },
+      );
+
+      slidesContainer.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        },
+        { passive: true },
+      );
+
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+          // Swipe Left -> Next Slide
+          nextSlide();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+          // Swipe Right -> Previous Slide
+          previousSlide();
+        }
+      }
+    </script>
+  </body>
+</html>
