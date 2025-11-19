@@ -778,10 +778,19 @@
           padding: 0.5rem;
         }
 
-        /* Let the JS scaling handle the size */
+        /* Responsive slide sizing for mobile */
         .slide {
-          padding: 1.5rem;
-          border-radius: 20px;
+          width: 100%;
+          max-width: 100vw;
+          height: auto;
+          min-height: 100vh;
+          padding: 1rem;
+          border-radius: 16px;
+          transform: none !important; /* Disable scaling on mobile */
+        }
+
+        .slide.active {
+          transform: none !important;
         }
 
         .visual-block {
@@ -790,7 +799,8 @@
         }
 
         .diagram-svg {
-          min-width: 450px; /* Force scroll for readability */
+          min-width: 300px; /* Reduced for mobile readability */
+          max-width: 100%;
         }
 
         .layout-split,
@@ -799,12 +809,37 @@
           gap: 1.5rem;
         }
 
+        /* Larger, more readable font sizes on mobile */
         .slide h1 {
-          font-size: 1.75rem;
+          font-size: 2.25rem;
+          line-height: 1.3;
         }
 
         .slide h2 {
-          font-size: 1.35rem;
+          font-size: 1.75rem;
+          line-height: 1.4;
+        }
+
+        .slide h3 {
+          font-size: 1.25rem;
+        }
+
+        .slide p {
+          font-size: 1.1rem;
+          line-height: 1.6;
+        }
+
+        .slide ul {
+          font-size: 1.05rem;
+        }
+
+        .stat-box strong {
+          font-size: 1.1rem;
+        }
+
+        .pill {
+          font-size: 0.9rem;
+          padding: 0.5rem 1rem;
         }
 
         .controls {
@@ -813,8 +848,8 @@
         }
 
         .btn {
-          padding: 0.5rem 0.8rem;
-          font-size: 0.85rem;
+          padding: 0.6rem 1rem;
+          font-size: 0.9rem;
         }
 
         /* Hide less critical controls on mobile */
