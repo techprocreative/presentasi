@@ -772,6 +772,18 @@
       }
 
       @media (max-width: 640px) {
+        .presentation-container {
+          padding-top: 60px; /* Space for fixed header */
+        }
+
+        .header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 100;
+        }
+
         .logo-text {
           display: flex;
           transform: scale(0.85);
@@ -800,7 +812,6 @@
 
         .slides-container {
           padding: 0.5rem;
-          padding-top: 70px; /* Space for header */
           overflow-y: auto;
           overflow-x: hidden;
         }
