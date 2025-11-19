@@ -280,26 +280,13 @@
       }
 
       @media (max-width: 640px) {
-        .slide {
-          position: static;
-          opacity: 0;
-          display: none;
-          width: 100%;
-          height: auto;
-          min-height: calc(100vh - 120px); /* Account for header and controls */
-          transform: none !important;
-          filter: none !important;
-        }
-
         .slide.active {
-          display: flex;
-          opacity: 1;
-          position: static;
+          z-index: 110; /* Above header */
         }
 
         .slide.prev,
         .slide.next {
-          display: none;
+          display: none; /* Hide inactive slides to prevent overlap */
         }
       }
 
