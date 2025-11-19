@@ -2497,10 +2497,10 @@
           containerHeight / baseHeight,
         );
 
-        // Minimum scale for mobile readability
+        // Fit to width on mobile for content visibility
         const isMobile = window.innerWidth <= 640;
         if (isMobile) {
-          scale = 1.0; // 100% scale on mobile
+          scale = containerWidth / baseWidth; // Fit width, allow vertical scroll
         }
 
         // Apply scale to CSS variable
