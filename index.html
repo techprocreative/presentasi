@@ -279,6 +279,30 @@
         scrollbar-color: rgba(99, 102, 241, 0.5) transparent;
       }
 
+      @media (max-width: 640px) {
+        .slide {
+          position: static;
+          opacity: 0;
+          display: none;
+          width: 100%;
+          height: auto;
+          min-height: 80vh;
+          transform: none !important;
+          filter: none !important;
+        }
+
+        .slide.active {
+          display: flex;
+          opacity: 1;
+          position: static;
+        }
+
+        .slide.prev,
+        .slide.next {
+          display: none;
+        }
+      }
+
       .slide::-webkit-scrollbar {
         width: 8px;
       }
@@ -776,6 +800,8 @@
 
         .slides-container {
           padding: 0.5rem;
+          overflow-y: auto;
+          overflow-x: hidden;
         }
 
         /* Responsive slide sizing for mobile */
